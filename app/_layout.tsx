@@ -13,12 +13,16 @@ export {
 } from 'expo-router';
 
 export default function RootLayout() {
-  const { colorScheme } = useColorScheme();
+  // Use the system color scheme if you want automatic switching.
+  // const { colorScheme } = useColorScheme();
+
+  // Force the app to use the light theme by default.
+  const scheme = 'light';
 
   return (
-    <ThemeProvider value={NAV_THEME[colorScheme ?? 'light']}>
-      <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
-      <Stack />
+    <ThemeProvider value={NAV_THEME[scheme]}>
+      <StatusBar style="dark" />
+      <Stack screenOptions={{ headerShown: false }} />
       <PortalHost />
     </ThemeProvider>
   );
